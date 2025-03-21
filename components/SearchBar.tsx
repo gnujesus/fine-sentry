@@ -6,11 +6,18 @@ import { colors } from "@/constants/colors";
 interface Props {
   placeholder: string;
   onPress?: () => void;
+  onChangeText?: (text: string) => void;
+  value?: string;
 }
 
-export default function SearchBar({ placeholder, onPress }: Props) {
+export default function SearchBar({
+  placeholder,
+  onPress,
+  onChangeText,
+  value,
+}: Props) {
   return (
-    <View className="flex-row gap-2 items-center bg-dark-200 rounded-3xl px-5 py-4">
+    <View className="flex-row gap-2 items-center bg-dark-200 rounded-[10px] px-5 py-4 bg-dark2">
       <Image
         source={icons.search}
         className="size-5"
@@ -20,9 +27,10 @@ export default function SearchBar({ placeholder, onPress }: Props) {
       <TextInput
         onPress={onPress}
         placeholder={placeholder}
-        value=""
-        onChangeText={() => {}}
+        value={value ?? ""}
+        onChangeText={onChangeText ?? (() => {})}
         placeholderTextColor={colors.text}
+        className="text-text"
       />
     </View>
   );

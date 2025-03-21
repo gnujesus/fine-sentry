@@ -12,6 +12,7 @@ module.exports = {
         light: "#F8F1F1",
         dark: "#1A1A1A",
         dark2: "#0f0f0f",
+        text: "#AAC8DA",
       },
     },
   },

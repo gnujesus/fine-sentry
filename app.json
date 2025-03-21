@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "vial-guard",
-    "slug": "vial-guard",
+    "name": "fine-sentry",
+    "slug": "fine-sentry",
     "version": "1.0.0",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
