@@ -29,7 +29,7 @@ export const initializeDatabase = async () => {
     );
   `);
 
-  console.log("🗃️ Recreated fines table (DEV)");
+  console.log("🗃️ Initialized fines table (DEV)");
 };
 
 /**

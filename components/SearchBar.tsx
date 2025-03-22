@@ -19,7 +19,7 @@ export default function SearchBar({
   className,
 }: Props) {
   return (
-    <View className="flex-row gap-2 items-center bg-dark-200 rounded-[10px] px-5 py-4 bg-dark2">
+    <View className="flex-row gap-2 items-center bg-dark-200 rounded-full px-5 py-4 bg-dark">
       <Image
         source={icons.search}
         className="size-5"
@@ -32,7 +32,7 @@ export default function SearchBar({
         value={value ?? ""}
         onChangeText={onChangeText ?? (() => {})}
         placeholderTextColor={colors.text}
-        className="text-text"
+        className="text-light"
       />
     </View>
   );

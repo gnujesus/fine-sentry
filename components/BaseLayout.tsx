@@ -7,5 +7,7 @@ interface Props {
 }
 
 export default function BaseLayout({ children, className }: Props) {
-  return <View className={`flex-1 bg-dark ${className}`}>{children}</View>;
+  return (
+    <View className={`flex-1 bg-background ${className}`}>{children}</View>
+  );
 }

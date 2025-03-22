@@ -8,16 +8,13 @@ import { colors } from "@/constants/colors";
 function TabIcon({ focused, title, icon }: any) {
   return focused ? (
     <>
-      <View className="bg bg-primary flex flex-row w-full flex-1 min-w-[112px] min-h-20 mt-4 justify-center items-center rounded-3xl overflow-hidden">
-        <Image source={icon} tintColor="#213547" className="size-5" />
-        <Text className="text-accent text-base font-semibold ml-2">
-          {title}
-        </Text>
+      <View className="bg bg-primary flex flex-row w-full flex-1 min-w-20 min-h-20 mt-10 justify-center items-center rounded-full overflow-hidden">
+        <Image source={icon} tintColor="#fff" className="size-5" />
       </View>
     </>
   ) : (
-    <View className="size-full justify-center items-center mt-4 rounded-full">
-      <Image source={icon} tintColor={colors.text} />
+    <View className="size-full justify-center items-center mt-10 rounded-full">
+      <Image source={icon} tintColor="#fff" className="size-5" />
     </View>
   );
 }
@@ -34,15 +31,15 @@ export default function _layout() {
           alignItems: "center",
         },
         tabBarStyle: {
-          backgroundColor: "#0f0f0f",
-          borderRadius: 10,
-          marginHorizontal: 90,
+          backgroundColor: "#111",
+          borderRadius: 50,
+          marginHorizontal: 140,
           marginBottom: 36,
-          height: 52,
+          height: 75,
           position: "absolute",
           overflow: "hidden",
           borderWidth: 1,
-          borderColor: "#0f0f0f",
+          borderColor: "#111",
         },
       }}
     >
