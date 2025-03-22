@@ -3,8 +3,9 @@ import React, { Children } from "react";
 
 interface Props {
   children: React.ReactNode;
+  className?: string;
 }
 
-export default function BaseLayout({ children }: Props) {
-  return <View className="flex-1 bg-dark">{children}</View>;
+export default function BaseLayout({ children, className }: Props) {
+  return <View className={`flex-1 bg-dark ${className}`}>{children}</View>;
 }

@@ -1,15 +1,28 @@
 import { Stack } from "expo-router";
-import { View } from "react-native";
+
+import { ActivityIndicator, View } from "react-native";
 
 // Import your global CSS file
 import "../global.css";
+import { Suspense } from "react";
+import { SQLiteProvider } from "expo-sqlite";
+
+export const DATABASE_NAME = "fines_app";
 
 export default function RootLayout() {
   return (
-    <Stack>
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="fines/[id]" options={{ headerShown: false }} />
-      <Stack.Screen name="fines/add" options={{ headerShown: false }} />
-    </Stack>
+    <Suspense fallback={<ActivityIndicator size="large" />}>
+      <SQLiteProvider
+        databaseName={DATABASE_NAME}
+        options={{ enableChangeListener: true }}
+        useSuspense
+      >
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="fines/[id]" options={{ headerShown: false }} />
+          <Stack.Screen name="fines/add" options={{ headerShown: false }} />
+        </Stack>
+      </SQLiteProvider>
+    </Suspense>
   );
 }

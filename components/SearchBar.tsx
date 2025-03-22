@@ -8,6 +8,7 @@ interface Props {
   onPress?: () => void;
   onChangeText?: (text: string) => void;
   value?: string;
+  className?: string;
 }
 
 export default function SearchBar({
@@ -15,6 +16,7 @@ export default function SearchBar({
   onPress,
   onChangeText,
   value,
+  className,
 }: Props) {
   return (
     <View className="flex-row gap-2 items-center bg-dark-200 rounded-[10px] px-5 py-4 bg-dark2">
