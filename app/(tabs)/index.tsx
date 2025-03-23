@@ -35,42 +35,20 @@ export default function Index() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 100 }} // Make space for the button
       >
-        <View className="flex-1 justify-between mt-5 mb-5 bg-light rounded-3xl p-10">
-          <View className="flex-row gap-5 justify-between">
-            <Image source={amadis} className="w-[60px] h-[60px] rounded-full" />
-
-            <View className="flex-row gap-2">
-              <TouchableOpacity className="rounded-xl p-4">
-                <Search color="white" size={30} strokeWidth={1.5} />
-              </TouchableOpacity>
-
-              <TouchableOpacity className="rounded-xl p-4 flex-row gap-7">
-                <Focus color="white" size={30} strokeWidth={1.5} />
-              </TouchableOpacity>
-            </View>
+        <View className="flex-1 justify-between mt-5 mb-5 bg-dark rounded-3xl p-10 flex gap-16">
+          <View className="rounded-3xl">
+            <Text className="text-white text-lg font-semibold">
+              Total Fines
+            </Text>
+            <Text className="text-white font-bold text-3xl">RD$ 720,000</Text>
           </View>
 
-          <View className="mt-5 rounded-3xl pt-5">
-            <LinearGradient
-              colors={["#05A16E", "#187558"]}
-              style={{ flex: 1, borderRadius: 15 }}
-              start={{ x: 1, y: 2 }}
-              end={{ x: 0, y: 1 }}
-              className="p-7 gap-2"
-            >
-              <Text className="text-white font-bold text-3xl">
-                Hello, Amadis
-              </Text>
-              <Text className="text-white text-lg font-semibold">
-                Total Fines
-              </Text>
-              <Text className="text-white text-2xl font-bold">👋</Text>
-            </LinearGradient>
-          </View>
-
-          <View className="absolute bg-light bottom-0 right-0 rounded-3xl px-32 py-5">
-            <Text className="text-white text-2xl font-bold mb-14">
-              RD$ 0.00
+          <View className="rounded-3xl flex-row justify-between">
+            <Text className="text-white text-lg font-semibold">
+              Amadis Suarez
+            </Text>
+            <Text className="text-white text-lg font-semibold">
+              809-123-4567
             </Text>
           </View>
         </View>
@@ -80,6 +58,17 @@ export default function Index() {
             onPress={() => router.push("/search")}
           />
         </View> */}
+
+        <View>
+          <TouchableOpacity>
+            <View className="bg-primary">
+              <Text className="text-white text-3xl mb-2">Create</Text>
+            </View>
+          </TouchableOpacity>
+          <View className="">
+            <Text className="text-accent text-3xl mb-2">Create</Text>
+          </View>
+        </View>
 
         <View className="mt-0 bg-light px-7 py-10 rounded-3xl">
           {data && <FineList fineList={data} />}
