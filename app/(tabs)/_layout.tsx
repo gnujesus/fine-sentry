@@ -1,25 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Tabs } from "expo-router";
 import { images } from "../../constants/images";
-import { View, Image, ImageBackground, Text } from "react-native";
+import { View, Image, ImageBackground, Text, Dimensions } from "react-native";
 import { icons } from "@/constants/icons";
 import { colors } from "@/constants/colors";
+import TabIcon from "@/components/TabIcon";
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring,
+} from "react-native-reanimated";
+import { useRootNavigationState } from "expo-router";
+import { House, Search, User } from "lucide-react-native";
 
-function TabIcon({ focused, title, icon }: any) {
-  return focused ? (
-    <>
-      <View className="bg bg-primary flex flex-row w-full flex-1 min-w-20 min-h-20 mt-10 justify-center items-center rounded-full overflow-hidden">
-        <Image source={icon} tintColor="#fff" className="size-5" />
-      </View>
-    </>
-  ) : (
-    <View className="size-full justify-center items-center mt-10 rounded-full">
-      <Image source={icon} tintColor="#fff" className="size-5" />
-    </View>
-  );
-}
+const tabs = [
+  {
+    id: 1,
+    icon: <House size={18} color="#fff" />,
+    name: "index",
+    title: "Home",
+  },
+  {
+    id: 2,
+    icon: <Search size={18} color="#fff" />,
+    name: "search",
+    title: "Search",
+  },
+  {
+    id: 3,
+    icon: <User size={18} color="#fff" />,
+    name: "profile",
+    title: "Profile",
+  },
+];
 
 export default function _layout() {
+  const navigationState = useRootNavigationState();
+
+  const index = navigationState?.routes.findIndex(
+    (route: any) => route.key === navigationState?.key
+  );
+
   return (
     <Tabs
       screenOptions={{
@@ -31,48 +52,35 @@ export default function _layout() {
           alignItems: "center",
         },
         tabBarStyle: {
-          backgroundColor: "#111",
+          backgroundColor: "#343638",
           borderRadius: 50,
-          marginHorizontal: 140,
+          marginHorizontal: 155,
           marginBottom: 36,
-          height: 75,
+          height: 65,
           position: "absolute",
           overflow: "hidden",
           borderWidth: 1,
-          borderColor: "#111",
+          borderColor: "#343638",
+          boxShadow: "0px 3px 3px rgba(255, 255, 255, 0.2)",
         },
       }}
     >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Home",
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} title="Home" icon={icons.home} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="search"
-        options={{
-          title: "Search",
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} title="Search" icon={icons.search} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="profile"
-        options={{
-          title: "Profile",
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} title="Profile" icon={icons.person} />
-          ),
-        }}
-      />
+      {tabs.map((tab) => (
+        <Tabs.Screen
+          key={tab.id}
+          name={tab.name}
+          options={{
+            title: tab.title,
+            headerShown: false,
+            tabBarIcon: ({ focused }) => (
+              <TabIcon focused={focused} icon={tab.icon} />
+            ),
+          }}
+        />
+      ))}
     </Tabs>
   );
+}
+function useAnimatedSyle(arg0: () => never[]) {
+  throw new Error("Function not implemented.");
 }

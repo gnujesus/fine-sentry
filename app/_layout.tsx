@@ -1,11 +1,12 @@
+// ! IMPORTANT TO BE FIRST
+import '@/app/utils/OverrideFonts';
+
 import { Stack } from "expo-router";
-
 import { ActivityIndicator, View } from "react-native";
-
-// Import your global CSS file
 import "../global.css";
 import { Suspense } from "react";
 import { SQLiteProvider } from "expo-sqlite";
+
 
 export const DATABASE_NAME = "fines_app";
 

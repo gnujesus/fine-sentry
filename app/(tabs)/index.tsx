@@ -1,8 +1,7 @@
-import { icons } from "@/constants/icons";
 import { Text, View, Image, ScrollView, TouchableOpacity } from "react-native";
-import SearchBar from "../../components/SearchBar";
 import { useRouter } from "expo-router";
 import BaseLayout from "@/components/BaseLayout";
+import Button from "@/components/Button";
 import {
   initializeDatabase,
   getAllFines,
@@ -11,8 +10,7 @@ import {
 import { useState, useEffect } from "react";
 import FineList from "../../components/FineList";
 import amadis from "@/assets/images/amadis.png";
-import { Focus, Search } from "lucide-react-native";
-import { LinearGradient } from "expo-linear-gradient";
+import { Focus, FilePlus, Bell, Settings } from "lucide-react-native";
 
 export default function Index() {
   const router = useRouter();
@@ -35,21 +33,49 @@ export default function Index() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 100 }} // Make space for the button
       >
-        <View className="flex-1 justify-between mt-5 mb-5 bg-dark rounded-3xl p-10 flex gap-16">
+        <View className="flex-1 flex-row self-center w-full items-center justify-between rounded-xl py-6 px-5">
+          <View className="flex-row gap-4">
+            <View>
+              <Image
+                className="w-20 h-20 rounded-full"
+                src="https://avatars.githubusercontent.com/u/107089453?v=4"
+              />
+            </View>
+
+            <View className="gap-3 mt-2">
+              <Text className="text-base text-white font-semibold">
+                Hello there, GNU
+              </Text>
+              <Text className="text-gray text-sm font-semibold">DGT-29382</Text>
+            </View>
+          </View>
+          <View className="gap-4 justify-center flex-row">
+            <TouchableOpacity>
+              <View className="w-16 h-16 bg-light2 rounded-full items-center justify-center">
+                <Settings color="white" size={20} className="mt-2" />
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <View className="w-16 h-16 bg-light2 rounded-full items-center justify-center">
+                <Bell color="white" size={20} className="mt-2" />
+              </View>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        <View className="flex-1 justify-between mt-5 mb-5 bg-light shadow-xl shadow-white/20 rounded-3xl p-10 flex gap-16">
           <View className="rounded-3xl">
-            <Text className="text-white text-lg font-semibold">
+            <Text className="text-white text-md font-semibold">
               Total Fines
             </Text>
             <Text className="text-white font-bold text-3xl">RD$ 720,000</Text>
           </View>
 
           <View className="rounded-3xl flex-row justify-between">
-            <Text className="text-white text-lg font-semibold">
-              Amadis Suarez
+            <Text className="text-white text-base font-semibold">
+              Shift ends
             </Text>
-            <Text className="text-white text-lg font-semibold">
-              809-123-4567
-            </Text>
+            <Text className="text-white text-base font-semibold">8:30 PM</Text>
           </View>
         </View>
         {/* <View className="flex-1 mt-5">
@@ -59,31 +85,31 @@ export default function Index() {
           />
         </View> */}
 
-        <View>
-          <TouchableOpacity>
-            <View className="bg-primary">
-              <Text className="text-white text-3xl mb-2">Create</Text>
-            </View>
-          </TouchableOpacity>
-          <View className="">
-            <Text className="text-accent text-3xl mb-2">Create</Text>
-          </View>
+        <View className="flex-1 flex-row justify-between gap-5 mb-3">
+          <Button
+            icon={<Focus color="white" size={18} className="mt-2" />}
+            animationClassName="transition transform active:-translate-y-1 active:scale-95"
+            className="px-[65px]"
+            textClassName="text-sm"
+          >
+            Scan
+          </Button>
+
+          <Button
+            icon={<FilePlus color="white" size={20} className="mt-2" />}
+            animationClassName="transition transform active:-translate-y-1 active:scale-95"
+            className="px-[65px]"
+            textClassName="text-sm"
+            onPress={() => router.push("/fines/add")}
+          >
+            Create
+          </Button>
         </View>
 
-        <View className="mt-0 bg-light px-7 py-10 rounded-3xl">
+        <View className="mt-0 py-10">
           {data && <FineList fineList={data} />}
         </View>
       </ScrollView>
-
-      <TouchableOpacity
-        className="absolute bottom-[7em] right-10" // Absolute positioning
-        activeOpacity={0.7}
-        onPress={() => router.push("/fines/add")}
-      >
-        <View className="bg-primary w-16 h-16 rounded-full justify-center items-center shadow-lg">
-          <Text className="text-accent text-3xl mb-2">+</Text>
-        </View>
-      </TouchableOpacity>
 
       {/* <TouchableOpacity
         className="absolute bottom-[7em] left-10" // Absolute positioning

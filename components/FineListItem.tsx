@@ -1,31 +1,38 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity, Pressable } from "react-native";
 import React from "react";
 import { ChevronRight } from "lucide-react-native";
+import { useRouter } from "expo-router";
 
 interface Props {
   fine: Fine;
 }
 
 export default function FineListItem({ fine }: Props) {
-  return (
-    <View className="flex-1 flex-row self-center w-full justify-between">
-      <View className="flex-row gap-7">
-        <View>
-          <Image className="w-20 h-20 rounded-full" src={fine.image_url} />
-        </View>
+  const router = useRouter();
 
-        <View className="gap-3">
-          <Text className="text-xl text-white font-bold">
-            {fine.brand} {fine.model}
-          </Text>
-          <Text className="text-md text-primary">
-            {fine.year}, <Text className="text-red-500">RD$ 500</Text>
-          </Text>
+  const handlePress = () => {
+    router.push(`/fines/${fine.id}`);
+  };
+
+  return (
+    <Pressable onPress={handlePress}>
+      <View className="flex-1 flex-row self-center w-full justify-between bg-light shadow-lg shadow-white/20 rounded-xl py-4 px-5">
+        <View className="flex-row gap-4">
+          <View>
+            <Image className="w-20 h-20 rounded-full" src={fine.image_url} />
+          </View>
+
+          <View className="mt-2">
+            <Text className="text-lg text-white font-semibold">
+              {fine.brand}, {fine.model}
+            </Text>
+            <Text className="text-sm text-gray ">{fine.date}</Text>
+          </View>
+        </View>
+        <View className="gap-4 justify-center">
+          <Text className="text-danger text-sm">RD$ 50000</Text>
         </View>
       </View>
-      <View className="gap-4 justify-center">
-        <ChevronRight size={20} color="white" />
-      </View>
-    </View>
+    </Pressable>
   );
 }
