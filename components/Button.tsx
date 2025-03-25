@@ -5,7 +5,7 @@ interface Props {
   children: React.ReactNode;
   icon?: React.ReactNode;
   className?: string;
-  animationClassName: string;
+  animationClassName?: string;
   textClassName?: string;
   onPress?: () => void;
 }

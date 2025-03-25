@@ -42,7 +42,7 @@ export default function Profile() {
             </View>
 
             <View className="gap-10">
-              <Text className="text-sm py-1 px-3 bg-secondary text-white rounded-full">
+              <Text className="text-sm py-1 px-3 bg-primary/20 text-white rounded-full">
                 Working since 2009
               </Text>
             </View>
@@ -60,9 +60,8 @@ export default function Profile() {
           TODO: make it responsive, cuz if I don't them I'm fucked */}
           <View className="w-1/2 flex-row justify-between gap-5">
             <Button
-              animationClassName="transition transform active:-translate-y-1 active:scale-95"
-              textClassName="text-sm"
-              className="py-1"
+              textClassName="text-sm text-background"
+              className="py-1 !bg-white shadow-white/40"
             >
               Manage Profile
             </Button>

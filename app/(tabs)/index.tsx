@@ -51,12 +51,12 @@ export default function Index() {
           </View>
           <View className="gap-4 justify-center flex-row">
             <TouchableOpacity>
-              <View className="w-16 h-16 bg-light2 rounded-full items-center justify-center">
+              <View className="w-16 h-16 bg-light rounded-full items-center justify-center">
                 <Settings color="white" size={20} className="mt-2" />
               </View>
             </TouchableOpacity>
             <TouchableOpacity>
-              <View className="w-16 h-16 bg-light2 rounded-full items-center justify-center">
+              <View className="w-16 h-16 bg-light rounded-full items-center justify-center">
                 <Bell color="white" size={20} className="mt-2" />
               </View>
             </TouchableOpacity>
